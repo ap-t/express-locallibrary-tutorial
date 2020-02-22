@@ -18,7 +18,9 @@ app.use(helmet());
 
 // Set up mongoose connection
 // Database uri
-var mongoDB = 'mongodb+srv://apdb:sxiqI1tJRQAHPneQ@cluster0-ro0rz.azure.mongodb.net/local_library?retryWrites=true&w=majority'
+var dev_db_url = 'mongodb+srv://apdb:sxiqI1tJRQAHPneQ@cluster0-ro0rz.azure.mongodb.net/local_library?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 // Connect to database
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 // Get Default connection
